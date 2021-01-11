@@ -131,8 +131,17 @@ if __name__ == '__main__':
         print("No API Key found, stopping ...")
     else:
         uuid = str(uuid.uuid1().int)[:6]
+
         print("Enter category alias >>> ", end="")
         category = input()
+        # path = 'data/'
+        # filename = "categories.csv"
+        # categories = []
+        # with open(os.path.join(path, filename), 'r') as csv_file:
+        #     csv_reader = csv.reader(csv_file, delimiter=',')
+        #     for row in csv_reader:
+        #         categories.append(row[0])
+        
         print("Enter locations >>> ", end="")
         locations = input().split()
 
@@ -141,14 +150,6 @@ if __name__ == '__main__':
         print(category)
         print("In the following locations: ", end="")
         print(locations)
-
-        path = 'data/'
-        filename = "categories.csv"
-        categories = []
-        with open(os.path.join(path, filename), 'r') as csv_file:
-            csv_reader = csv.reader(csv_file, delimiter=',')
-            for row in csv_reader:
-                categories.append(row[0])
 
         req_count = 0
         dedup = set()
