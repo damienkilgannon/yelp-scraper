@@ -123,6 +123,14 @@ def scrape(category, location, api_key, dedup):
 
     return req_count
 
+def file_input(filename):
+    path = 'data/'
+    list = []
+    with open(os.path.join(path, filename), 'r') as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        for row in csv_reader:
+            list.append(row[0])
+    return list
 
 if __name__ == '__main__':
     api_key = os.getenv("API_KEY", None)
@@ -133,21 +141,18 @@ if __name__ == '__main__':
         uuid = str(uuid.uuid1().int)[:6]
 
         print("Enter category alias >>> ", end="")
-        category = input()
-        # path = 'data/'
-        # filename = "categories.csv"
-        # categories = []
-        # with open(os.path.join(path, filename), 'r') as csv_file:
-        #     csv_reader = csv.reader(csv_file, delimiter=',')
-        #     for row in csv_reader:
-        #         categories.append(row[0])
-        
+        categories = input().split()
+        # filename = ""
+        # categories = file_input(filename)
+
         print("Enter locations >>> ", end="")
         locations = input().split()
+        # filename = ""
+        # locations = file_input(filename)
 
-        print("Scraping the following Yelp category.")
-        print("Category: ", end="")
-        print(category)
+        print("Scraping the following Yelp categories.")
+        print("Categories: ", end="")
+        print(categories)
         print("In the following locations: ", end="")
         print(locations)
 
